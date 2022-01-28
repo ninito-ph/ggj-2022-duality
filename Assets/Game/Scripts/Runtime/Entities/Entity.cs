@@ -32,9 +32,13 @@ namespace Game.Editor.Entities
 
 		#region Public Methods
 
+		/// <summary>
+		/// Kills the entity
+		/// </summary>
 		public void Kill()
 		{
-			
+			inputHandler.InputSuspended = true;
+			_onDeath?.Invoke(this);
 		}
 
 		#endregion
