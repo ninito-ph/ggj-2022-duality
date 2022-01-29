@@ -1,13 +1,16 @@
-using Game.Editor.Entities;
+using Game.Runtime.Entities;
+using Game.Runtime.Systems;
 using UnityEngine;
 
 namespace Game.Props.Interactables {
     public class Key : BaseInteractable {
         protected override void OnTriggerEnter(Collider collider) {
-            Entity entity;
+            KeyHolder keyHolder;
 
-            if(collider.TryGetComponent<Entity>(out entity)) {
-                // Give the player a key, and add to it an OnDeath event so that it respawns when it dies.
+            if(collider.TryGetComponent<KeyHolder>(out keyHolder)) {
+                PlayInteractionFeedback();
+                keyHolder.GetKey();
+                keyHolder.GetComponent<Entity>().OnDeath += keyHolder.LoseKey;
             }
         }
     }

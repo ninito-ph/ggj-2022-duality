@@ -1,17 +1,20 @@
-using Game.Editor.Entities;
-using Game.Props.Interactables;
+using Game.Runtime.Systems;
 using UnityEngine;
 
-namespace Props.Interactables {
+namespace Game.Props.Interactables {
     public class ManaCrystal : BaseInteractable {
         [SerializeField]
         private float manaRestored = 25f;
 
         protected override void OnTriggerEnter(UnityEngine.Collider collider) {
-            Entity entity;
+            ManaWallet manaWallet;
 
-            if(collider.TryGetComponent<Entity>(out entity)) {
-                // Restore the entity's current mana.
+            if(collider.TryGetComponent<ManaWallet>(out manaWallet)) {
+                PlayInteractionFeedback();
+                manaWallet.RestoreMana(manaRestored);
+                GetComponent<Renderer>().enabled = false;
+                GetComponent<Collider>().enabled = false;
+                Destroy(gameObject, audioClip.length);
             }
         }
     }

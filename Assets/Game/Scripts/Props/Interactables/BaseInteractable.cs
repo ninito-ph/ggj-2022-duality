@@ -5,15 +5,18 @@ namespace Game.Props.Interactables {
         [SerializeField]
         protected GameObject instancedParticle;
 
-        /// <summary>
-        /// Interact with this particular item.
-        /// </summary>
-        public virtual void Interact() {
-            Instantiate(instancedParticle, transform.position, Quaternion.identity);
+        protected void PlayInteractionFeedback() {
+            if(audioClip != null) {
+                audioSource.PlayOneShot(audioClip);
+            }
+
+            if(instancedParticle != null) {
+                Instantiate(instancedParticle, transform.position, Quaternion.identity);
+            }
         }
 
         protected virtual void OnTriggerEnter(Collider collider) {
-            Interact();
+            PlayInteractionFeedback();
         }
     }
 }

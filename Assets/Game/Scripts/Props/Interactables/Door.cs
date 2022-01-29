@@ -1,13 +1,26 @@
-using Game.Editor.Entities;
+using Game.Runtime.Entities;
+using Game.Runtime.Systems;
 using UnityEngine;
 
 namespace Game.Props.Interactables {
     public class Door : BaseInteractable {
-        protected override void OnTriggerEnter(Collider collider) {
-            Entity entity;
+        private Animator animator;
 
-            if(collider.TryGetComponent<Entity>(out entity)) {
-                // If it has a key, open the door, give its team a point and proceed to the next stage if applicable.
+        protected override void Start() {
+            base.Start();
+            animator = GetComponent<Animator>();
+        }
+
+        protected override void OnTriggerEnter(Collider collider) {
+            KeyHolder keyHolder;
+
+            if(collider.TryGetComponent<KeyHolder>(out keyHolder)) {
+                if(keyHolder.HasKey()) {
+                    PlayInteractionFeedback();
+                    animator.Play("Unlock");
+                    keyHolder.LoseKey(keyHolder.GetComponent<Entity>());
+                    // Give this entity a point and proceed to the next stage if applicable.
+                }
             }
         }
     }

@@ -9,7 +9,13 @@ namespace Game.Props.Breakables {
         /// Break this particular item.
         /// </summary>
         public virtual void Break() {
-            Instantiate(instancedParticle, transform.position, Quaternion.identity);
+            if(audioClip != null) {
+                audioSource.PlayOneShot(audioClip);
+            }
+
+            if(instancedParticle != null) {
+                Instantiate(instancedParticle, transform.position, Quaternion.identity);
+            }
             // Play the corresponding sound effect.
             Destroy(this.gameObject);
         }

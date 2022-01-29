@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8139365283022823845}
   - component: {fileID: 8139365283022823846}
   - component: {fileID: 8357425500078949995}
+  - component: {fileID: -7094339718284383303}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -193,3 +194,15 @@ MonoBehaviour:
   manaRegenPerSecond: 3
   manaRegenDelay: 3
   manaRegenThreshold: 0.5
+--- !u!114 &-7094339718284383303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8139365283022823847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41479ab97a733ca4589d69eb25711a64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

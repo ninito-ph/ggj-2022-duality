@@ -1,5 +1,5 @@
 using UnityEngine;
-using Game.Editor.Entities;
+using Game.Runtime.Entities;
 
 namespace Game.Props.Interactables {
     public class Hazard : BaseInteractable {
@@ -7,6 +7,7 @@ namespace Game.Props.Interactables {
             Entity entity;
 
             if(collider.TryGetComponent<Entity>(out entity)) {
+                PlayInteractionFeedback();
                 entity.Kill();
             }
         }
