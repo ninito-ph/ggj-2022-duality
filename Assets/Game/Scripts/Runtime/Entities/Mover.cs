@@ -1,24 +1,29 @@
-﻿using UnityEngine;
+﻿using Game.Runtime.Input;
+using UnityEngine;
 
-namespace Game.Editor.Entities
+namespace Game.Runtime.Entities
 {
 	/// <summary>
 	/// A simple class that moves an entity
 	/// </summary>
 	public abstract class Mover : MonoBehaviour
 	{
-		#region Fields
+		#region Properties
 
-		private Vector2 _queuedMovement;
+		public FrameInput Input { get; set; }
+
+		#endregion
+		
+		#region Unity Callbacks
+
+		protected virtual void FixedUpdate()
+		{
+			Move();
+		}
 
 		#endregion
 
-		#region Private Methods
-
-		public void SetQueuedMovement(Vector2 movement)
-		{
-			_queuedMovement = movement;
-		}
+		#region Public Methods
 
 		public abstract void Move();
 
