@@ -34,7 +34,8 @@ namespace Game
 
         private void Update()
         {
-            if(shakeTimer > 0)
+            #region Timer
+            if (shakeTimer > 0)
             {
                 shakeTimer -= Time.deltaTime;
                 if(shakeTimer <= 0f)
@@ -45,7 +46,14 @@ namespace Game
                     cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = 0f;
                 }
             }
-            
+            #endregion
+
+            #region ScreenShakeTest
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                ShakeCamera(5f, .2f);
+            }
+            #endregion
         }
     }
 }
