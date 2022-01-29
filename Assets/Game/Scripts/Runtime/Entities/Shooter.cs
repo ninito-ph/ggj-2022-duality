@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.Editor.Entities
+namespace Game.Runtime.Entities
 {
 	/// <summary>
 	/// A component that shoots
