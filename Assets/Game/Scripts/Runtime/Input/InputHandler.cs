@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.Editor.Entities
+namespace Game.Runtime.Input
 {
 	/// <summary>
 	/// A component that handles input for an entity
@@ -18,7 +18,6 @@ namespace Game.Editor.Entities
 		public void Update()
 		{
 			CollectInput();
-
 			if (InputSuspended) return;
 			DistributeInput();
 		}
