@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace Game
 {
-    public class Mana : MonoBehaviour
+    public class SpawnPoint : MonoBehaviour
     {
-        public static Mana instance;
+        public static SpawnPoint instance;
         public GameObject manaColectable;
 
         private void Awake()
@@ -19,9 +19,9 @@ namespace Game
             //
         }
 
-        private void OnTriggerStay(Collider other)
+        private void OnTriggerStay2D(Collider2D other)
         {
-            if(other.tag == "Key")
+            if(other.gameObject.CompareTag("Key"))
             {
                 manaColectable.SetActive(false);
             }
