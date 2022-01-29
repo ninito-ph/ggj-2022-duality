@@ -1,7 +1,8 @@
 ﻿using System;
+using Game.Runtime.Input;
 using UnityEngine;
 
-namespace Game.Editor.Entities
+namespace Game.Runtime.Entities
 {
 	/// <summary>
 	/// An entity that can be killed
