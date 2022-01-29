@@ -17,12 +17,14 @@ namespace Game
         public bool startTimer = false;
         #endregion
 
+        public static MatchSystem instance;
+
         public bool gameHasEnded;
         public GameObject endGameScreen;
 
         private void Awake()
         {
-            //
+            instance = this;
         }
         private void Update()
         {
