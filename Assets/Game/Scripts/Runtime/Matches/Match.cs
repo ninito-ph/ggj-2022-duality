@@ -14,9 +14,24 @@ namespace Game.Runtime.Matches
 		[Header("Progress")]
 		[SerializeField]
 		public Stage CurrentStage;
-		
+
 		[SerializeField]
-		public bool IsThereKeyActive;
+		public bool IsThereKeyActive = false;
+
+		#endregion
+
+		#region Public Methods
+
+		/// <summary>
+		/// Transitions to a new stage
+		/// </summary>
+		/// <param name="newStage">The stage to transition to</param>
+		public void TransitionToStage(Stage newStage)
+		{
+			CurrentStage?.End();
+			CurrentStage = newStage;
+			CurrentStage.Initialize();
+		}
 
 		#endregion
 	}
