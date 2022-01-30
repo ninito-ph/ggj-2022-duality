@@ -304,6 +304,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputHandler: {fileID: 8139365283022823843}
+--- !u!114 &-1686482225721415493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8139365283022823847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8be9aed70ea41958c71af751b014b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  mover: {fileID: 8139365283022823846}
+  jumpEffect: {fileID: 3186993829884548577, guid: d0ca5b407b8f6de4e967359d4f8a5f7e, type: 3}
+  landEffect: {fileID: 0}
 --- !u!1001 &5489745084752239013
 PrefabInstance:
   m_ObjectHideFlags: 0
