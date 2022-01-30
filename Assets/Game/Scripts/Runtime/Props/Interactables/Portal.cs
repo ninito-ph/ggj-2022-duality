@@ -1,4 +1,5 @@
 using Game.Runtime.Entities;
+using Game.Runtime.Entities.Bullet;
 using UnityEngine;
 
 namespace Game.Runtime.Props.Interactables {
@@ -18,7 +19,7 @@ namespace Game.Runtime.Props.Interactables {
         [SerializeField]
         private GameObject shootInstancedParticle;
 
-        private Element _portalElement = Element.Light;
+        private DualType _dualType = DualType.Light;
 
         protected override void OnTriggerEnter(Collider collider) {
             Entity entity;
@@ -26,14 +27,20 @@ namespace Game.Runtime.Props.Interactables {
             if(collider.TryGetComponent<Entity>(out entity)) {
                 PlayWarpFeedback();
 
-                if(_portalElement == Element.Light) {
+                if(_dualType == DualType.Light) {
                     entity.transform.position = lightWarpPoint.transform.position;
                 } else {
                     entity.transform.position = darkWarpPoint.transform.position;
                 }
-            }
+            } else {
+                Bullet bullet;
 
-            // If it's a projectile, change the portal's element.
+                if(collider.TryGetComponent<Bullet>(out bullet)) {
+                    PlayShootFeedback();
+
+                    _dualType = _dualType == DualType.Light ? DualType.Dark : DualType.Light;
+                }
+            }
         }
 
         private void PlayWarpFeedback() {

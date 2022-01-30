@@ -19,9 +19,9 @@ namespace Game.Entities.Input.Player
 
 		[SerializeField]
 		private Shooter shootingProvider;
-		
+
 		[SerializeField]
-		private AimArrow aimArrow;
+		private AimArrow aimProvider;
 
 		[SerializeField]
 		private PlayerInput playerInputProvider;
@@ -53,22 +53,18 @@ namespace Game.Entities.Input.Player
 
 		protected override void CollectInput()
 		{
-			Vector2 test = playerInputProvider.currentActionMap.FindAction(aimAction).ReadValue<Vector2>();
-			
-			_frameInput = new FrameInput
+			_frameInput = new FrameInput()
 			{
 				AxisMovement = new Vector2(
 					playerInputProvider.currentActionMap.FindAction(horizontalAxisAction).ReadValue<float>(),
 					playerInputProvider.currentActionMap.FindAction(verticalAxisAction).ReadValue<float>()),
 				JumpPress = playerInputProvider.currentActionMap.FindAction(jumpAction).WasPressedThisFrame(),
 				JumpRelease = playerInputProvider.currentActionMap.FindAction(jumpAction).WasReleasedThisFrame(),
-
 				Fire = playerInputProvider.currentActionMap.FindAction(shootAction).WasPressedThisFrame(),
 				SwapElement = playerInputProvider.currentActionMap.FindAction(swapElementAction).WasPressedThisFrame(),
-
-				AxisAim = playerInputProvider.currentActionMap.FindAction(aimAction).ReadValue<Vector2>(),
+				IsGamepad = playerInputProvider.currentControlScheme == "Gamepad",
+				Aim = playerInputProvider.currentActionMap.FindAction(aimAction).ReadValue<Vector2>()
 			};
-
 		}
 
 		protected override void DistributeInput()
@@ -78,14 +74,14 @@ namespace Game.Entities.Input.Player
 				shootingProvider.Shoot();
 			}
 
-			if (aimArrow != null)
-			{
-				aimArrow.AxisAim = _frameInput.AxisAim;
-			}
-
 			if (movementProvider != null)
 			{
 				movementProvider.Input = _frameInput;
+			}
+
+			if (aimProvider != null)
+			{
+				aimProvider.Input = _frameInput;
 			}
 		}
 
