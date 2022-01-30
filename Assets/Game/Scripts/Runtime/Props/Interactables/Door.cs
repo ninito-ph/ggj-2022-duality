@@ -1,12 +1,24 @@
+using System;
 using Game.Runtime.Entities;
 using Game.Runtime.Systems;
 using UnityEngine;
 
 namespace Game.Runtime.Props.Interactables
 {
-	public class Door : BaseInteractable
+	/// <summary>
+	/// A class that manages an unlockable door
+	/// </summary>
+	public sealed class Door : BaseInteractable
 	{
+		#region Fields
+
+		public Action OnDoorOpened; 
+		
 		private Animator animator;
+
+		#endregion
+
+		#region Unity Callbacks
 
 		protected override void Start()
 		{
@@ -16,18 +28,16 @@ namespace Game.Runtime.Props.Interactables
 
 		protected override void OnTriggerEnter(Collider collider)
 		{
-			KeyHolder keyHolder;
+			if (!collider.TryGetComponent(out KeyHolder keyHolder)) return;
+			if (!keyHolder.HasKey()) return;
 
-			if (collider.TryGetComponent<KeyHolder>(out keyHolder))
-			{
-				if (keyHolder.HasKey())
-				{
-					PlayInteractionFeedback();
-					animator.Play("Unlock");
-					keyHolder.LoseKey(keyHolder.GetComponent<Entity>());
-					// Give this entity a point and proceed to the next stage if applicable.
-				}
-			}
+			PlayInteractionFeedback();
+			animator.Play("Unlock");
+			keyHolder.LoseKey(keyHolder.GetComponent<Entity>());
+			
+			OnDoorOpened?.Invoke();
 		}
+
+		#endregion
 	}
 }

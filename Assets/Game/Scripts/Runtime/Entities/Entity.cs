@@ -76,8 +76,17 @@ namespace Game.Runtime.Entities
 		public void Kill()
 		{
 			inputHandler.InputSuspended = true;
+			gameObject.SetActive(false);
 			_onDeath?.Invoke(this);
-			Destroy(gameObject);
+		}
+
+		/// <summary>
+		/// Revives the entity
+		/// </summary>
+		public void Revive()
+		{
+			inputHandler.InputSuspended = false;
+			gameObject.SetActive(true);
 		}
 
 		#endregion
