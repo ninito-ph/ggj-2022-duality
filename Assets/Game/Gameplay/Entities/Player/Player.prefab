@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementProvider: {fileID: 8139365283022823846}
   shootingProvider: {fileID: 2499197424361052131}
-  aimArrow: {fileID: 0}
+  aimProvider: {fileID: 4482986648772408684}
   playerInputProvider: {fileID: 5692987175574460868}
   horizontalAxisAction: Horizontal
   verticalAxisAction: Vertical
@@ -263,6 +263,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 82c847ad-af24-433c-98c3-16351cf5877d
     m_ActionName: Movement/SwapElement[/XInputControllerWindows/leftShoulder,/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8ee1dbc5-edca-4c37-903b-849d6a82da90
+    m_ActionName: Movement/Aim[/XInputControllerWindows/rightStick,/Mouse/position]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Movement
@@ -395,6 +399,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8221807702476089212, guid: cc8b399ee3474fd4d8e2cf91bc6fe221, type: 3}
+      propertyPath: wallet
+      value: 
+      objectReference: {fileID: 8357425500078949995}
+    - target: {fileID: 8221807702934777033, guid: cc8b399ee3474fd4d8e2cf91bc6fe221, type: 3}
+      propertyPath: centerTransform
+      value: 
+      objectReference: {fileID: 8139365283022823841}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc8b399ee3474fd4d8e2cf91bc6fe221, type: 3}
 --- !u!224 &4482986648251222468 stripped
@@ -407,3 +419,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 46684478257341052, guid: cc8b399ee3474fd4d8e2cf91bc6fe221, type: 3}
   m_PrefabInstance: {fileID: 5489745084752239013}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4482986648772408684 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8221807702934777033, guid: cc8b399ee3474fd4d8e2cf91bc6fe221, type: 3}
+  m_PrefabInstance: {fileID: 5489745084752239013}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3169fb339ab4e11a5c9f6a2ae70d93e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
