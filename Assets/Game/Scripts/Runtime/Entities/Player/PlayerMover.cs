@@ -4,7 +4,7 @@ using System.Linq;
 using Game.Runtime.Input;
 using UnityEngine;
 
-namespace Game.Runtime.Entities
+namespace Game.Runtime.Entities.Player
 {
 	/// <summary>
 	/// A simple class that moves an entity
@@ -265,8 +265,6 @@ namespace Game.Runtime.Entities
 		/// </summary>
 		private void CalculateWalkMovement()
 		{
-			Debug.Log($"Actual: {Input.AxisMovement.x}");
-			
 			if (!Mathf.Approximately(0f, Input.AxisMovement.x))
 			{
 				_hSpeed += Input.AxisMovement.x * _acceleration * Time.fixedDeltaTime;
@@ -378,7 +376,6 @@ namespace Game.Runtime.Entities
 
 		private bool CanJump()
 		{
-			Debug.Log($"Actual: {HasBufferedJump}");
 			return (Input.JumpPress && CanUseCoyote) || HasBufferedJump;
 		}
 

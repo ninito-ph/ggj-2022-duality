@@ -1,21 +1,37 @@
 using Game.Runtime.Entities;
 using UnityEngine;
 
-namespace Game.Runtime.Systems {
-    public class KeyHolder : MonoBehaviour {
-        private bool _hasKey;
+namespace Game.Runtime.Systems
+{
+	/// <summary>
+	/// A class that holds a key for an entity
+	/// </summary>
+	public sealed class KeyHolder : MonoBehaviour
+	{
+		#region Fields
 
-        public bool HasKey() {
-            return _hasKey;
-        }
+		private bool _hasKey;
 
-        public void GetKey() {
-            _hasKey = true;
-        }
+		#endregion
 
-        public void LoseKey(Entity entity) {
-            _hasKey = false;
-            entity.OnDeath -= LoseKey;
-        }
-    }
+		#region Public Methods
+
+		public bool HasKey()
+		{
+			return _hasKey;
+		}
+
+		public void GetKey()
+		{
+			_hasKey = true;
+		}
+
+		public void LoseKey(Entity entity)
+		{
+			_hasKey = false;
+			entity.OnDeath -= LoseKey;
+		}
+
+		#endregion
+	}
 }

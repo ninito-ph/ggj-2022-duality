@@ -9,7 +9,7 @@ namespace Game.Runtime.Entities
 	/// An entity that can be killed
 	/// </summary>
 	[RequireComponent(typeof(ManaWallet))]
-	public sealed class Entity : MonoBehaviour
+	public class Entity : MonoBehaviour
 	{
 		#region Fields
 

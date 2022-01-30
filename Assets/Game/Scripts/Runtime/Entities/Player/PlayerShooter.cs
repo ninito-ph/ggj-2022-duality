@@ -1,10 +1,8 @@
 ﻿using System;
-using Game.Runtime.Entities;
-using Game.Runtime.Entities.Bullet;
 using Game.Runtime.Systems;
 using UnityEngine;
 
-namespace Game.Runtime.Input.Player
+namespace Game.Runtime.Entities.Player
 {
 	/// <summary>
 	/// A class that is responsible for shooting bullets
@@ -55,7 +53,7 @@ namespace Game.Runtime.Input.Player
 
 			GameObject bullet = InstantiateBullet();
 			
-			bullet.GetComponent<Bullet>().Shooter = this;
+			bullet.GetComponent<Bullet.Bullet>().Shooter = this;
 			manaSource.TryExpendMana(manaCostPerShot);
 			_lastFireTime = Time.time;
 		}
