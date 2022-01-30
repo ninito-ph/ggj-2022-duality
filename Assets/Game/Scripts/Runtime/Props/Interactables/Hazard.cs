@@ -1,7 +1,7 @@
 using UnityEngine;
 using Game.Runtime.Entities;
 
-namespace Game.Props.Interactables {
+namespace Game.Runtime.Props.Interactables {
     public class Hazard : BaseInteractable {
         protected override void OnTriggerEnter(Collider collider) {
             Entity entity;

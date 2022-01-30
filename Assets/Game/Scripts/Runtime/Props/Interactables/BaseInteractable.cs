@@ -1,14 +1,11 @@
 using UnityEngine;
 
-namespace Game.Props.Breakables {
-    public class BaseBreakable : BaseProp {
+namespace Game.Runtime.Props.Interactables {
+    public class BaseInteractable : BaseProp {
         [SerializeField]
         protected GameObject instancedParticle;
 
-        /// <summary>
-        /// Break this particular item.
-        /// </summary>
-        public virtual void Break() {
+        protected void PlayInteractionFeedback() {
             if(audioClip != null) {
                 audioSource.PlayOneShot(audioClip);
             }
@@ -16,8 +13,10 @@ namespace Game.Props.Breakables {
             if(instancedParticle != null) {
                 Instantiate(instancedParticle, transform.position, Quaternion.identity);
             }
-            // Play the corresponding sound effect.
-            Destroy(this.gameObject);
+        }
+
+        protected virtual void OnTriggerEnter(Collider collider) {
+            PlayInteractionFeedback();
         }
     }
 }

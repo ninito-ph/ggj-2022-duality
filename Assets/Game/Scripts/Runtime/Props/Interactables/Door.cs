@@ -2,7 +2,7 @@ using Game.Runtime.Entities;
 using Game.Runtime.Systems;
 using UnityEngine;
 
-namespace Game.Props.Interactables {
+namespace Game.Runtime.Props.Interactables {
     public class Door : BaseInteractable {
         private Animator animator;
 

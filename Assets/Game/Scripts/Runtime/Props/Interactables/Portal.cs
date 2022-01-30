@@ -1,7 +1,7 @@
 using Game.Runtime.Entities;
 using UnityEngine;
 
-namespace Game.Props.Interactables {
+namespace Game.Runtime.Props.Interactables {
     public class Portal : BaseInteractable {
         [SerializeField]
         private GameObject lightWarpPoint;
@@ -19,6 +19,22 @@ namespace Game.Props.Interactables {
         private GameObject shootInstancedParticle;
 
         private Element _portalElement = Element.Light;
+
+        protected override void OnTriggerEnter(Collider collider) {
+            Entity entity;
+
+            if(collider.TryGetComponent<Entity>(out entity)) {
+                PlayWarpFeedback();
+
+                if(_portalElement == Element.Light) {
+                    entity.transform.position = lightWarpPoint.transform.position;
+                } else {
+                    entity.transform.position = darkWarpPoint.transform.position;
+                }
+            }
+
+            // If it's a projectile, change the portal's element.
+        }
 
         private void PlayWarpFeedback() {
             if(warpAudioClip != null) {
@@ -38,22 +54,6 @@ namespace Game.Props.Interactables {
             if(shootInstancedParticle != null) {
                 Instantiate(shootInstancedParticle, transform.position, Quaternion.identity);
             }
-        }
-
-        protected override void OnTriggerEnter(Collider collider) {
-            Entity entity;
-
-            if(collider.TryGetComponent<Entity>(out entity)) {
-                PlayWarpFeedback();
-
-                if(_portalElement == Element.Light) {
-                    entity.transform.position = lightWarpPoint.transform.position;
-                } else {
-                    entity.transform.position = darkWarpPoint.transform.position;
-                }
-            }
-
-            // If it's a projectile, change the portal's element.
         }
     }
 }

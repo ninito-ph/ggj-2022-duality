@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.Props {
+namespace Game.Runtime.Props {
     [RequireComponent(typeof(AudioSource))]
     public class BaseProp : MonoBehaviour {
         [SerializeField]
