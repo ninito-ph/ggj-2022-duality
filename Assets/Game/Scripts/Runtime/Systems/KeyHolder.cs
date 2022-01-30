@@ -1,4 +1,5 @@
 using Game.Runtime.Entities;
+using Game.Runtime.Matches;
 using UnityEngine;
 
 namespace Game.Runtime.Systems
@@ -30,6 +31,7 @@ namespace Game.Runtime.Systems
 		{
 			_hasKey = false;
 			entity.OnDeath -= LoseKey;
+			MatchManager.Instance.IsThereKeyActive = false;
 		}
 
 		#endregion
