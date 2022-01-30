@@ -41,9 +41,9 @@ namespace Game
 		private void OnDrawGizmos()
 		{
 			Gizmos.color = Color.red;
-			Gizmos.DrawSphere(pointA.position, 2.5f);
+			Gizmos.DrawSphere(pointA.position, 0.5f);
 			Gizmos.DrawLine(pointA.position, pointB.position);
-			Gizmos.DrawSphere(pointB.position, 2.5f);
+			Gizmos.DrawSphere(pointB.position, 0.5f);
 		}
 
 		#endregion
