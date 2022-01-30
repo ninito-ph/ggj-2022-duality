@@ -11,5 +11,6 @@ namespace Game.Runtime.Input
 		public bool JumpPress;
 		public bool JumpRelease;
 		public bool Fire;
+		public bool SwapElement;
 	}
 }
