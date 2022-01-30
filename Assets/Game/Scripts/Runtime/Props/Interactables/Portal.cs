@@ -5,6 +5,11 @@ using UnityEngine;
 namespace Game.Runtime.Props.Interactables {
     public class Portal : BaseInteractable {
         [SerializeField]
+        private GameObject lightVisualEffect;
+        [SerializeField]
+        private GameObject darkVisualEffect;
+
+        [SerializeField]
         private GameObject lightWarpPoint;
         [SerializeField]
         private GameObject darkWarpPoint;
@@ -19,15 +24,16 @@ namespace Game.Runtime.Props.Interactables {
         [SerializeField]
         private GameObject shootInstancedParticle;
 
-        private DualType _dualType = DualType.Light;
+        [SerializeField]
+        private DualType dualType = DualType.Light;
 
-        protected override void OnTriggerEnter(Collider collider) {
+        protected override void OnTriggerEnter2D(Collider2D collider) {
             Entity entity;
 
             if(collider.TryGetComponent<Entity>(out entity)) {
                 PlayWarpFeedback();
 
-                if(_dualType == DualType.Light) {
+                if(dualType == DualType.Light) {
                     entity.transform.position = lightWarpPoint.transform.position;
                 } else {
                     entity.transform.position = darkWarpPoint.transform.position;
@@ -38,7 +44,9 @@ namespace Game.Runtime.Props.Interactables {
                 if(collider.TryGetComponent<Bullet>(out bullet)) {
                     PlayShootFeedback();
 
-                    _dualType = _dualType == DualType.Light ? DualType.Dark : DualType.Light;
+                    dualType = dualType == DualType.Light ? DualType.Dark : DualType.Light;
+                    lightVisualEffect.SetActive(dualType == DualType.Light);
+                    darkVisualEffect.SetActive(dualType == DualType.Dark);
                 }
             }
         }

@@ -26,7 +26,7 @@ namespace Game.Runtime.Props.Interactables
 			animator = GetComponent<Animator>();
 		}
 
-		protected override void OnTriggerEnter(Collider collider)
+		protected override void OnTriggerEnter2D(Collider2D collider)
 		{
 			if (!collider.TryGetComponent(out KeyHolder keyHolder)) return;
 			if (!keyHolder.HasKey()) return;

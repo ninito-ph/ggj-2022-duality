@@ -13,7 +13,7 @@ namespace Game.Runtime.Props.Interactables
 			MatchManager.Instance.IsThereKeyActive = true;
 		}
 
-		protected override void OnTriggerEnter(Collider collider)
+		protected override void OnTriggerEnter2D(Collider2D collider)
 		{
 			if (!collider.TryGetComponent(out KeyHolder keyHolder)) return;
 			

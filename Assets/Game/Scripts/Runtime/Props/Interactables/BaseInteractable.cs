@@ -15,7 +15,7 @@ namespace Game.Runtime.Props.Interactables {
             }
         }
 
-        protected virtual void OnTriggerEnter(Collider collider) {
+        protected virtual void OnTriggerEnter2D(Collider2D collider) {
             PlayInteractionFeedback();
         }
     }

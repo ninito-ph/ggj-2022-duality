@@ -6,7 +6,7 @@ namespace Game.Runtime.Props.Interactables {
         [SerializeField]
         private float manaRestored = 25f;
 
-        protected override void OnTriggerEnter(UnityEngine.Collider collider) {
+        protected override void OnTriggerEnter2D(Collider2D collider) {
             ManaWallet manaWallet;
 
             if(collider.TryGetComponent<ManaWallet>(out manaWallet)) {

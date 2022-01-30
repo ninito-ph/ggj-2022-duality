@@ -1,3 +1,4 @@
+using Game.Runtime.Entities.Bullet;
 using UnityEngine;
 
 namespace Game.Runtime.Props.Breakables {
@@ -8,7 +9,7 @@ namespace Game.Runtime.Props.Breakables {
         /// <summary>
         /// Break this particular item.
         /// </summary>
-        public virtual void Break() {
+        protected virtual void Break() {
             if(audioClip != null) {
                 audioSource.PlayOneShot(audioClip);
             }
@@ -16,8 +17,20 @@ namespace Game.Runtime.Props.Breakables {
             if(instancedParticle != null) {
                 Instantiate(instancedParticle, transform.position, Quaternion.identity);
             }
-            // Play the corresponding sound effect.
-            Destroy(this.gameObject);
+
+            if(audioClip != null) {
+                Destroy(this.gameObject, audioClip.length);
+            } else {
+                Destroy(this.gameObject);
+            }
+        }
+
+        protected virtual void OnCollisionEnter2D(Collision2D collision) {
+            Bullet bullet;
+
+            if(collision.collider.TryGetComponent<Bullet>(out bullet)) {
+                Break();
+            }
         }
     }
 }

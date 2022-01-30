@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Game.Runtime.Entities;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Game.Runtime.Spawning
 {
@@ -22,9 +23,9 @@ namespace Game.Runtime.Spawning
 		/// <summary>
 		/// Spawns a player
 		/// </summary>
-		/// <param name="playerPrefab">The prefab of the player</param>
+		/// <param name="playerInput">The player's input provider</param>
 		/// <returns>The player's Entity component</returns>
-		public Entity SpawnPlayer(GameObject playerPrefab)
+		public Entity SpawnPlayer(PlayerInput playerInput)
 		{
 			SpawnPoint spawnPoint = spawnPoints.FirstOrDefault(point => point.IsPointFree());
 
@@ -34,8 +35,9 @@ namespace Game.Runtime.Spawning
 				return null;
 			}
 
-			GameObject player = Instantiate(playerPrefab, spawnPoint.transform.position, Quaternion.identity);
-			return player.GetComponent<Entity>();
+			Debug.Log(spawnPoint.name);
+			playerInput.transform.SetPositionAndRotation(spawnPoint.transform.position, Quaternion.identity);
+			return playerInput.GetComponent<Entity>();
 		}
 
 		/// <summary>

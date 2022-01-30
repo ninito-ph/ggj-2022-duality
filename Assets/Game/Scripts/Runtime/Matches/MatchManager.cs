@@ -4,6 +4,7 @@ using Cinemachine;
 using Game.Runtime.Entities;
 using Ninito.UsualSuspects;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Game.Runtime.Matches
 {
@@ -58,9 +59,10 @@ namespace Game.Runtime.Matches
 		/// <summary>
 		/// Adds a new player to the match
 		/// </summary>
-		public void AddPlayer()
+		public void AddPlayer(PlayerInput playerInput)
 		{
-			Entity newPlayer = _currentMatch.CurrentStage.PlayerSpawner.SpawnPlayer(playerPrefab);
+			_playerEntities ??= new List<Entity>();
+			Entity newPlayer = _currentMatch.CurrentStage.PlayerSpawner.SpawnPlayer(playerInput);
 
 			newPlayer.OnDeath += StartPlayerRespawn;
 			_playerEntities.Add(newPlayer);

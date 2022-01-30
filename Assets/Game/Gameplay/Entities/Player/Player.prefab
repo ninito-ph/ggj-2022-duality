@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 5692987175574460868}
   - component: {fileID: 2499197424361052131}
   - component: {fileID: 1280405202539468364}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,9 +311,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8139365283022823841}
     m_Modifications:
+    - target: {fileID: 779803952928653698, guid: cc8b399ee3474fd4d8e2cf91bc6fe221, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572489663302235315, guid: cc8b399ee3474fd4d8e2cf91bc6fe221, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3681820932657978255, guid: cc8b399ee3474fd4d8e2cf91bc6fe221, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758592878476410185, guid: cc8b399ee3474fd4d8e2cf91bc6fe221, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3957505275623454788, guid: cc8b399ee3474fd4d8e2cf91bc6fe221, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807751715058568133, guid: cc8b399ee3474fd4d8e2cf91bc6fe221, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8221807702411563104, guid: cc8b399ee3474fd4d8e2cf91bc6fe221, type: 3}
       propertyPath: m_Name
       value: GO_PlayerCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8221807702411563104, guid: cc8b399ee3474fd4d8e2cf91bc6fe221, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8221807702411563105, guid: cc8b399ee3474fd4d8e2cf91bc6fe221, type: 3}
       propertyPath: m_Pivot.x
