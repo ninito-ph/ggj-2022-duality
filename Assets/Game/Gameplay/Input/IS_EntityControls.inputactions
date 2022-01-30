@@ -52,12 +52,12 @@
                 },
                 {
                     "name": "Aim",
-                    "type": "PassThrough",
-                    "id": "3f29c37c-86db-4593-adb2-f112eaeaa45f",
+                    "type": "Value",
+                    "id": "8ee1dbc5-edca-4c37-903b-849d6a82da90",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -239,22 +239,22 @@
                 },
                 {
                     "name": "",
-                    "id": "dc5f41f8-6b22-4c29-abb3-bda6334bbae7",
-                    "path": "<Pointer>/position",
+                    "id": "6d55d60c-a3a1-4b79-a63f-aac696432f48",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KeyboardAndMouse",
+                    "groups": "Gamepad",
                     "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "dd334235-2582-4c9e-89c2-d9e2605f0adc",
-                    "path": "<Gamepad>/rightStick",
+                    "id": "4d737bd2-acb7-43ed-9a32-e446ce6f1b98",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "KeyboardAndMouse",
                     "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false

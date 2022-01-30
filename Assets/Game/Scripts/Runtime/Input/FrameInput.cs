@@ -10,11 +10,9 @@ namespace Game.Runtime.Input
 		public Vector2 AxisMovement;
 		public bool JumpPress;
 		public bool JumpRelease;
-
-		public Vector2 AxisAim;
 		public bool Fire;
 		public bool SwapElement;
-		
-		public bool Pause; 
+		public bool IsGamepad;
+		public Vector2 Aim;
 	}
 }

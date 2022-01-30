@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Game.Entities.Input.Player;
+using Game.Runtime.Input;
+using UnityEngine;
 
 namespace Game.Runtime.UI
 {
@@ -9,35 +11,33 @@ namespace Game.Runtime.UI
 	{
 		#region Fields
 
+		[Header("Dependencies")]
+		[SerializeField]
+		public Transform arrow;
+
 		[Header("Configuration")]
 		[SerializeField]
-		private Transform centerTransform;
+		public Transform centerTransform;
 
 		[SerializeField]
-		private float arrowAreaRadius = 0.5f;
+		public float arrowAreaRadius = 0.5f;
 
 		[SerializeField]
-		private float arrowRotationOffset = 90f;
+		public float arrowRotationOffset = 90f;
 
 		private Camera _mainCamera;
-		private Transform _arrow;
 
 		#endregion
 
 		#region Properties
 
-		public Vector3 AxisAim { get; set; }
-
+		public FrameInput Input { get; set; }
 		private Camera MainCamera => _mainCamera ? _mainCamera : _mainCamera = Camera.main;
+		private float Distance => Vector2.Distance(arrow.position, centerTransform.position);
 
 		#endregion
 
 		#region Unity Callbacks
-
-		private void Awake()
-		{
-			_arrow = transform;
-		}
 
 		private void LateUpdate()
 		{
@@ -55,10 +55,19 @@ namespace Game.Runtime.UI
 		private void AdjustArrowPosition()
 		{
 			Vector3 centerPosition = centerTransform.position;
-			Vector3 screenPointCenter = MainCamera.WorldToScreenPoint(centerPosition);
 
-			_arrow.position = centerPosition +
-			                  (AxisAim - screenPointCenter).normalized * arrowAreaRadius;
+			if(Input.IsGamepad) {
+				Vector3 analogPosition = new Vector3(Input.Aim.x, Input.Aim.y, 0f);
+
+				arrow.position = centerPosition + analogPosition.normalized * arrowAreaRadius;
+			} else {
+				Vector3 screenPointCenter = MainCamera.WorldToScreenPoint(centerPosition);
+				Vector2 mousePosition = Input.Aim;
+
+				arrow.position = centerPosition +
+				(new Vector3(mousePosition.x, mousePosition.y, 0) - screenPointCenter).normalized * arrowAreaRadius;
+			}
+
 		}
 
 		/// <summary>
@@ -66,10 +75,18 @@ namespace Game.Runtime.UI
 		/// </summary>
 		private void AlignArrow()
 		{
-			Vector2 centerPosition = MainCamera.WorldToViewportPoint(transform.position);
-			Vector2 mousePosition = MainCamera.ScreenToViewportPoint(AxisAim);
+			float angle = 0f;
 
-			float angle = GetAngleBetweenTwoPoints(centerPosition, mousePosition);
+			if(Input.IsGamepad) {
+				angle = Mathf.Atan2(-Input.Aim.y, -Input.Aim.x) * Mathf.Rad2Deg;
+			} else {
+				Vector2 centerPosition = MainCamera.WorldToViewportPoint(centerTransform.position);
+				Vector2 mousePosition = Input.Aim;
+				Vector2 viewportMousePosition = MainCamera.ScreenToViewportPoint(new Vector3(mousePosition.x, mousePosition.y, 0));
+
+				angle = GetAngleBetweenTwoPoints(centerPosition, viewportMousePosition);
+			}
+
 			transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle + arrowRotationOffset));
 		}
 
