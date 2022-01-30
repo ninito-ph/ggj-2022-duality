@@ -125,8 +125,12 @@ namespace Game.Runtime.Entities.Player
 			get => _grounded;
 			private set
 			{
+				if (value != _grounded)
+				{
+					OnGroundedChanged?.Invoke(value);
+				}
+
 				_grounded = value;
-				OnGroundedChanged?.Invoke(value);
 			}
 		}
 
