@@ -106,12 +106,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementProvider: {fileID: 8139365283022823846}
   shootingProvider: {fileID: 2499197424361052131}
+  aimArrow: {fileID: 0}
   playerInputProvider: {fileID: 5692987175574460868}
   horizontalAxisAction: Horizontal
   verticalAxisAction: Vertical
   jumpAction: Jump
   shootAction: Shoot
   swapElementAction: SwapElement
+  aimAction: Aim
 --- !u!61 &8139365283022823844
 BoxCollider2D:
   m_ObjectHideFlags: 0

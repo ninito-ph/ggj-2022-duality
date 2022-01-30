@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.Design.Serialization;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game.Runtime.UI
 {
@@ -10,32 +9,35 @@ namespace Game.Runtime.UI
 	{
 		#region Fields
 
-		[Header("Dependencies")]
-		[SerializeField]
-		public Transform arrow;
-
 		[Header("Configuration")]
 		[SerializeField]
-		public Transform centerTransform;
+		private Transform centerTransform;
 
 		[SerializeField]
-		public float arrowAreaRadius = 0.5f;
+		private float arrowAreaRadius = 0.5f;
 
 		[SerializeField]
-		public float arrowRotationOffset = 90f;
+		private float arrowRotationOffset = 90f;
 
 		private Camera _mainCamera;
+		private Transform _arrow;
 
 		#endregion
 
 		#region Properties
 
+		public Vector3 AxisAim { get; set; }
+
 		private Camera MainCamera => _mainCamera ? _mainCamera : _mainCamera = Camera.main;
-		private float Distance => Vector2.Distance(arrow.position, centerTransform.position);
 
 		#endregion
 
 		#region Unity Callbacks
+
+		private void Awake()
+		{
+			_arrow = transform;
+		}
 
 		private void LateUpdate()
 		{
@@ -54,8 +56,9 @@ namespace Game.Runtime.UI
 		{
 			Vector3 centerPosition = centerTransform.position;
 			Vector3 screenPointCenter = MainCamera.WorldToScreenPoint(centerPosition);
-			arrow.position = centerPosition +
-			                 (UnityEngine.Input.mousePosition - screenPointCenter).normalized * arrowAreaRadius;
+
+			_arrow.position = centerPosition +
+			                  (AxisAim - screenPointCenter).normalized * arrowAreaRadius;
 		}
 
 		/// <summary>
@@ -64,10 +67,9 @@ namespace Game.Runtime.UI
 		private void AlignArrow()
 		{
 			Vector2 centerPosition = MainCamera.WorldToViewportPoint(transform.position);
-			Vector2 mousePosition = MainCamera.ScreenToViewportPoint(UnityEngine.Input.mousePosition);
+			Vector2 mousePosition = MainCamera.ScreenToViewportPoint(AxisAim);
 
 			float angle = GetAngleBetweenTwoPoints(centerPosition, mousePosition);
-
 			transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle + arrowRotationOffset));
 		}
 
