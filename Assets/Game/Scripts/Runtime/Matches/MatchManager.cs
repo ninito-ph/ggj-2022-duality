@@ -111,7 +111,7 @@ namespace Game.Runtime.Matches
 
 			_currentStageIndex++;
 			_currentMatch.TransitionToStage(stages[_currentStageIndex]);
-			mainCamera.Follow = _currentMatch.CurrentStage.CameraFocus;
+			stages[_currentStageIndex].VirtualCamera.SetActive(true);
 
 			_currentMatch.CurrentStage.OnStageCompleted += ProgressStage;
 		}

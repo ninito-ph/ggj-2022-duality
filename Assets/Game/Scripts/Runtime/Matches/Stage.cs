@@ -27,16 +27,14 @@ namespace Game.Runtime.Matches
 
 		[SerializeField]
 		private PlayerSpawner _playerSpawner;
-		
-		[SerializeField]
-		private Transform cameraFocus;
+
+		public GameObject VirtualCamera;
 		
 		#endregion
 
 		#region Properties
 
 		public PlayerSpawner PlayerSpawner => _playerSpawner;
-		public Transform CameraFocus => cameraFocus;
 
 		#endregion
 

@@ -60,7 +60,9 @@ namespace Game.Runtime.Graphics
             // Plays effects
             _visualParticleSystem.Play();
             PlayEffectSound();
-            CameraShaker.Instance.InduceStress(cameraTrauma);
+            if(CameraShaker.Instance != null) {
+                CameraShaker.Instance.InduceStress(cameraTrauma);
+            }
 
             yield return new WaitForSeconds(_lifetime);
             Destroy(gameObject);

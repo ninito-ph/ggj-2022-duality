@@ -22,8 +22,8 @@ namespace Game.Runtime.Props.Interactables
 			keyHolder.GetKey();
 			keyHolder.GetComponent<Entity>().OnDeath += keyHolder.LoseKey;
 
-			GetComponent<Renderer>().enabled = false;
-			GetComponent<Collider>().enabled = false;
+			GetComponentInChildren<Renderer>().enabled = false;
+			GetComponentInChildren<Collider2D>().enabled = false;
 
 			if (audioClip != null)
 			{

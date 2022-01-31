@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2936249995234847974}
   - component: {fileID: 2936249995234847973}
   m_Layer: 0
-  m_Name: GO_Bullet
+  m_Name: GO_Light_Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137,6 +137,6 @@ MonoBehaviour:
   speed: 30
   lifeTime: 5
   manaRestore: 6.5
-  _type: 0
+  _type: 1
   hitVFX: {fileID: 0}
   endVFX: {fileID: 0}

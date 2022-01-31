@@ -24,6 +24,9 @@ namespace Game.Entities.Input.Player
 		private AimArrow aimProvider;
 
 		[SerializeField]
+		private Entity entity;
+
+		[SerializeField]
 		private PlayerInput playerInputProvider;
 
 		private FrameInput _frameInput;
@@ -82,6 +85,10 @@ namespace Game.Entities.Input.Player
 			if (aimProvider != null)
 			{
 				aimProvider.Input = _frameInput;
+			}
+
+			if(_frameInput.SwapElement && entity != null) {
+				entity.FlipType();
 			}
 		}
 

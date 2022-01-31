@@ -2,6 +2,7 @@ using System;
 using Game.Runtime.Entities;
 using Game.Runtime.Systems;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.Runtime.Props.Interactables
 {
@@ -13,8 +14,9 @@ namespace Game.Runtime.Props.Interactables
 		#region Fields
 
 		public Action OnDoorOpened; 
-		
-		private Animator animator;
+
+		[SerializeField]
+		private UnityEvent onUnlockEvent;
 
 		#endregion
 
@@ -23,7 +25,6 @@ namespace Game.Runtime.Props.Interactables
 		protected override void Start()
 		{
 			base.Start();
-			animator = GetComponent<Animator>();
 		}
 
 		protected override void OnTriggerEnter2D(Collider2D collider)
@@ -32,7 +33,7 @@ namespace Game.Runtime.Props.Interactables
 			if (!keyHolder.HasKey()) return;
 
 			PlayInteractionFeedback();
-			animator.Play("Unlock");
+			onUnlockEvent.Invoke();
 			keyHolder.LoseKey(keyHolder.GetComponent<Entity>());
 			
 			OnDoorOpened?.Invoke();

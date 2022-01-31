@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 5692987175574460868}
   - component: {fileID: 2499197424361052131}
   - component: {fileID: 1280405202539468364}
+  - component: {fileID: -1686482225721415493}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -107,6 +108,7 @@ MonoBehaviour:
   movementProvider: {fileID: 8139365283022823846}
   shootingProvider: {fileID: 2499197424361052131}
   aimProvider: {fileID: 4482986648772408684}
+  entity: {fileID: 1280405202539468364}
   playerInputProvider: {fileID: 5692987175574460868}
   horizontalAxisAction: Horizontal
   verticalAxisAction: Vertical
@@ -287,7 +289,7 @@ MonoBehaviour:
   manaSource: {fileID: 8357425500078949995}
   shooterEntity: {fileID: 1280405202539468364}
   bulletSpawnPoint: {fileID: 5515402493377854425}
-  darkBulletPrefab: {fileID: 2936249995234847972, guid: 1ad2a06f83e12544fa277401d9eb5757, type: 3}
+  darkBulletPrefab: {fileID: 2936249995234847972, guid: fa0ca48111abd8b4c9ae63861a67b040, type: 3}
   lightBulletPrefab: {fileID: 2936249995234847972, guid: 1ad2a06f83e12544fa277401d9eb5757, type: 3}
   manaCostPerShot: 17.5
   fireInterval: 0.15
@@ -319,7 +321,9 @@ MonoBehaviour:
   animator: {fileID: 0}
   mover: {fileID: 8139365283022823846}
   jumpEffect: {fileID: 3186993829884548577, guid: d0ca5b407b8f6de4e967359d4f8a5f7e, type: 3}
+  jumpEffectOffset: {x: 0, y: 0, z: 0}
   landEffect: {fileID: 0}
+  landEffectOffset: {x: 0, y: 0, z: 0}
 --- !u!1001 &5489745084752239013
 PrefabInstance:
   m_ObjectHideFlags: 0

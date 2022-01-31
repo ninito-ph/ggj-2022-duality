@@ -13,8 +13,8 @@ namespace Game.Runtime.Props.Interactables {
                 PlayInteractionFeedback();
                 manaWallet.RestoreMana(manaRestored);
 
-                GetComponent<Renderer>().enabled = false;
-                GetComponent<Collider>().enabled = false;
+                GetComponentInChildren<Renderer>().enabled = false;
+                GetComponentInChildren<Collider2D>().enabled = false;
 
                 if(audioClip != null) {
                     Destroy(gameObject, audioClip.length);
