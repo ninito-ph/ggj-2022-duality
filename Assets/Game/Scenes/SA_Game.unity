@@ -12150,7 +12150,7 @@ PrefabInstance:
     - target: {fileID: 4394637784113942403, guid: afdffb3a2ce723142bea9155453f2a08, type: 3}
       propertyPath: darkWarpPoint
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 156013223}
     - target: {fileID: 4394637784113942403, guid: afdffb3a2ce723142bea9155453f2a08, type: 3}
       propertyPath: lightWarpPoint
       value: 
@@ -57054,7 +57054,7 @@ PrefabInstance:
     - target: {fileID: 4394637784113942403, guid: afdffb3a2ce723142bea9155453f2a08, type: 3}
       propertyPath: darkWarpPoint
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 156013223}
     - target: {fileID: 4394637784113942403, guid: afdffb3a2ce723142bea9155453f2a08, type: 3}
       propertyPath: lightWarpPoint
       value: 

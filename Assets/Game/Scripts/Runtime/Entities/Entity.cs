@@ -17,6 +17,12 @@ namespace Game.Runtime.Entities
 		[SerializeField]
 		private InputHandler inputHandler;
 
+		[SerializeField]
+		private GameObject darkHat;
+
+		[SerializeField]
+		private GameObject lightHat;
+
 		private ManaWallet _wallet;
 		private event Action<Entity> _onDeath;
 
@@ -42,6 +48,11 @@ namespace Game.Runtime.Entities
 			TryGetComponent(out _wallet);
 		}
 
+		private void Start() {
+			lightHat.SetActive(Type == DualType.Light);
+			darkHat.SetActive(Type == DualType.Dark);
+		}
+
 		#endregion
 
 		#region Public Methods
@@ -52,6 +63,9 @@ namespace Game.Runtime.Entities
 		public void FlipType()
 		{
 			Type = Type == DualType.Light ? DualType.Dark : DualType.Light;
+			lightHat.SetActive(Type == DualType.Light);
+			darkHat.SetActive(Type == DualType.Dark);
+
 		}
 		
 		/// <summary>
