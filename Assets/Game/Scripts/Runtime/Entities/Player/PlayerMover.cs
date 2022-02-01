@@ -99,6 +99,8 @@ namespace Game.Runtime.Entities.Player
 
 		public event Action<bool> OnGroundedChanged;
 		public event Action OnJump;
+		public event Action<bool> OnMovementChanged;
+		public event Action<float> OnDirectionChanged;
 
 		private Rigidbody2D _rigidbody;
 		private BoxCollider2D _collider;
@@ -392,6 +394,9 @@ namespace Game.Runtime.Entities.Player
 			Vector3 temporalMovement = RawMovement * Time.fixedDeltaTime;
 
 			_rigidbody.MovePosition(_rigidbody.position + (Vector2)temporalMovement);
+
+			OnMovementChanged?.Invoke(Mathf.Abs(temporalMovement.x) > 0.1f && _grounded);
+			OnDirectionChanged?.Invoke(temporalMovement.x);
 		}
 
 		#endregion

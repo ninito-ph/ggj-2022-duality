@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Game.Runtime.UI;
 using UnityEngine;
 
 namespace Game.Runtime.Entities.Player
@@ -16,6 +16,9 @@ namespace Game.Runtime.Entities.Player
 
 		[SerializeField]
 		private PlayerMover mover;
+
+		[SerializeField]
+		private AimArrow aimArrow;
 
 		[Header("Configurations")]
 		[SerializeField]
@@ -40,12 +43,16 @@ namespace Game.Runtime.Entities.Player
 		{
 			mover.OnJump += PlayJumpEffect;
 			mover.OnGroundedChanged += PlayLandEffect;
+			mover.OnMovementChanged += PlayRunEffect;
+			mover.OnDirectionChanged += LookTowardsMovementDirection;
 		}
 
 		private void OnDestroy()
 		{
 			mover.OnJump -= PlayJumpEffect;
 			mover.OnGroundedChanged -= PlayLandEffect;
+			mover.OnMovementChanged -= PlayRunEffect;
+			mover.OnDirectionChanged -= LookTowardsMovementDirection;
 		}
 
 		private void OnDrawGizmosSelected()
@@ -62,6 +69,7 @@ namespace Game.Runtime.Entities.Player
 
 		private void PlayJumpEffect()
 		{
+			animator.SetTrigger("Jump");
 			if (jumpEffect != null)
 			{
 				Instantiate(jumpEffect, transform.position + jumpEffectOffset, Quaternion.identity);
@@ -72,9 +80,22 @@ namespace Game.Runtime.Entities.Player
 		{
 			if (!grounded) return;
 
+			animator.SetTrigger("Land");
 			if (landEffect != null)
 			{
 				Instantiate(landEffect, transform.position + landEffectOffset, Quaternion.identity);
+			}
+		}
+
+		private void PlayRunEffect(bool isRunning) {
+			animator.SetBool("IsRunning", isRunning);
+		}
+
+		private void LookTowardsMovementDirection(float direction) {
+			if(direction > 0f) {
+				animator.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+			} else if(direction < 0f) {
+				animator.transform.rotation = Quaternion.Euler(0f, -90f, 0f);
 			}
 		}
 
