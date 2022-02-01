@@ -1,4 +1,5 @@
-using Game.Runtime.Entities;
+using Game.Runtime.Entities.Bullet
+;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,9 +16,9 @@ namespace Game.Runtime.Props.Interactables {
         private bool _isEnabled = false;
 
         protected override void OnTriggerEnter2D(Collider2D collider) {
-            Entity entity;
+           
 
-            if(collider.TryGetComponent<Entity>(out entity)) {
+            if(collider.TryGetComponent<Bullet> (out Bullet bullet)) {
                 PlayInteractionFeedback();
                 Interact();
             }
