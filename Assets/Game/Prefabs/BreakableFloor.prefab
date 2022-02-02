@@ -145,7 +145,7 @@ MonoBehaviour:
   audioClip: {fileID: 0}
   instancedParticle: {fileID: 0}
   respawnDelay: 5
-  breakDelay: 0.5
+  breakDelay: 0.1
 --- !u!61 &3280052149667930683
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -159,7 +159,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.019499362, y: 0.43548796}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -170,7 +170,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.90900433, y: 0.12902409}
   m_EdgeRadius: 0
 --- !u!1 &6237744291746772270
 GameObject:
@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 1911551149004375116}
   - component: {fileID: 4035075840339450829}
   - component: {fileID: 4186240295372056437}
+  - component: {fileID: 4712997846455705895}
   m_Layer: 6
   m_Name: BreakableFloor_Mesh
   m_TagString: Untagged
@@ -253,3 +254,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!61 &4712997846455705895
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6237744291746772270}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.012999833, y: -0.06499863}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.0259997, y: 0.87000275}
+  m_EdgeRadius: 0
