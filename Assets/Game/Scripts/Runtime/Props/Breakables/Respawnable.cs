@@ -8,7 +8,9 @@ namespace Runtime.Props.Breakables {
         private float respawnDelay = 5f;
 
         private Renderer _renderer;
-        private Collider2D _collider;
+        private Collider2D[] _colliders;
+        private Rigidbody2D _rigidbody;
+        private Vector3 _initialPosition;
         private WaitForSeconds _respawnDelay;
         private Coroutine _respawnObjectCoroutine;
 
@@ -28,14 +30,26 @@ namespace Runtime.Props.Breakables {
             base.Start();
 
             _renderer = GetComponentInChildren<Renderer>();
-            _collider = GetComponentInChildren<Collider2D>();
+            _colliders = GetComponentsInChildren<Collider2D>();
+            _rigidbody = GetComponentInChildren<Rigidbody2D>();
+            _initialPosition = transform.position;
             _respawnDelay = new WaitForSeconds(respawnDelay);
         }
 
         protected virtual IEnumerator RespawnObject() {
             yield return _respawnDelay;
             _renderer.enabled = true;
-            _collider.enabled = true;
+
+            foreach(Collider2D collider in _colliders) {
+                collider.enabled = true;
+            }
+
+            if(_rigidbody != null) {
+                _rigidbody.velocity = Vector2.zero;
+                _rigidbody.angularVelocity = 0f;
+            }
+
+            transform.position = _initialPosition;
         }
 
         protected virtual void OnDestroy() {
@@ -46,7 +60,14 @@ namespace Runtime.Props.Breakables {
 
         private void DisableObjectTemporarily() {
             _renderer.enabled = false;
-            _collider.enabled = false;
+            foreach(Collider2D collider in _colliders) {
+                collider.enabled = false;
+            }
+
+            if(_rigidbody != null) {
+                _rigidbody.Sleep();
+            }
+
             _respawnObjectCoroutine = StartCoroutine(RespawnObject());
         }
     }
